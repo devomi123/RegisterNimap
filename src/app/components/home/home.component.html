@@ -2,9 +2,10 @@
   <nav class="navbar navbar-expand-sm ">
     <div class="container">
       <a class="navbar-brand bg-light" href="#">DEMO APP</a>
-      <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon "></span>
+        <span class="navbar-toggler-icon" style="background-color: white;"><i class="fa fa-bars"></i></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav  mb-2 mb-lg-0  ms-auto text-light">
@@ -88,12 +89,17 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
           </div>
           <div class="modal-body">
-            <div class="col-lg-12 d-flex">
-              <div class="col-lg-4">
-                <img src="../../../assets/p2.jpg" alt="" width="140px">
-              </div>
-              <div class="col-lg-8">
-                <form [formGroup]="data" (ngSubmit)="submit(data.value)">
+            <form [formGroup]="data" (ngSubmit)="submit(data.value)">
+              <input for="image" type="hidden" formControlName="image" />
+              <div class="col-lg-12 d-flex">
+                <div class="col-lg-4 ">
+                  <!-- <input type="file" accept="image/*" (change)="handleUpload($event)" id="image"> -->
+                  <img src="{{ imagecode }}" alt="" style="width:90px ;">
+
+                  <label for="upload-photo">Upload a image</label>
+                  <input type="file" name="photo" id="upload-photo" (change)="handleUpload($event)" />
+                </div>
+                <div class="col-lg-8">
                   <div>
                     <label class="form-label">First Name</label>
                     <input type="text" class="form-control" formControlName="firstName">
@@ -107,10 +113,10 @@
                     <input type="email" class="form-control" formControlName="email">
                   </div>
 
-                  <div>
+                  <!-- <div>
                     <label for="customRange3" class="form-label">Example range</label>
                     <input type="range" class="form-range" min="20" max="50" step="0.5" id="customRange3">
-                  </div>
+                  </div> -->
                   <div>
                     <label class="form-label">City</label>
                     <input type="text" class="form-control" formControlName="city">
@@ -128,9 +134,9 @@
                     <button type="button" class="btn btn-primary" (click)="submit(data.value)">Submit</button>
                     <button type="" class="btn btn-danger">Cancel</button>
                   </div>
-                </form>
+                </div>
               </div>
-            </div>
+            </form>
           </div>
 
         </div>
@@ -144,7 +150,7 @@
   <div class="container">
     <div class="lead">
 
-      <div class="creative text-center pt-5"> We're Leaders <br> Creative Digital Recruitment
+      <div class="creative text-center pt-5"> <b> We're Leaders <br> Creative Digital Recruitment </b>
       </div>
       <div class="  ">
         <hr class="line">

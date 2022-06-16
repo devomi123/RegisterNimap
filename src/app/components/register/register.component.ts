@@ -7,20 +7,19 @@ import { Route, ActivatedRoute } from '@angular/router';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
- data:any;
- id:any;
- lastid:any;
-  constructor( private http:HttpClient ,private route: ActivatedRoute) { }
+  data: any;
+  id: any;
+  lastid: any;
+  constructor(private http: HttpClient, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-  this.id = this.route.snapshot.paramMap.get(this.id);
+    this.id = this.route.snapshot.paramMap.get("id");
     console.log(this.id);
 
-    this.http.get('http://localhost:3000/User').subscribe(res => {
-      console.log('res', res)
-      this.data = res;
-      console.log(this.data);
-      this.lastid =[]
+    this.http.get('http://localhost:3000/User/'+ this.id).subscribe((data: any) => {
+      console.log(data);
+      this.data = data;
+
     })
   }
 }
